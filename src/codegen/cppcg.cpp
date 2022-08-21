@@ -741,11 +741,7 @@ void CppCodeGenerator::GenEvents(PObjectBase class_obj, const EventVector& event
               wxString::Format(wxT("%s_%s"), m_useConnect ? wxT("connect") : wxT("entry"), event->GetName());
 
             PObjectBase obj = event->GetObject();
-            if (
-              !GenEventEntry(obj, obj->GetObjectInfo(), templateName, handlerName, disconnect) &&
-              (!disconnect || event->GetName() != "OnMenuSelection")) {
-                // We don't bother with disconnecting OnMenuSelection events, that's why we skip the
-                // error message in that case.
+            if (!GenEventEntry(obj, obj->GetObjectInfo(), templateName, handlerName, disconnect)) {
                 wxLogError(
                   wxT("Missing \"evt_%s\" template for \"%s\" class. Review your XML object description"), templateName,
                   class_name);
