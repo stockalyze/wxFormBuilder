@@ -34,6 +34,11 @@ locations manually. The following instructions use MSYS2.
 
 Install MSYS2 and open a MINGW32 or MINGW64 shell.
 
+*SATYA:* For building on Windows, set the variable MINGW_PACKAGE_PREFIX.
+```sh
+export MINGW_PACKAGE_PREFIX=mingw-w64-x86_64
+```
+
 Installing the Prerequisites:
 
 ```sh
