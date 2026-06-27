@@ -174,10 +174,11 @@ Written by
     </template>
     <template name="include">@#include &lt;wx/menu.h&gt;</template>
     <template name="evt_entry_OnMenuSelection">EVT_MENU( $id, #handler )</template>
-    <template name="evt_connect_OnMenuSelection">#parent $name->Bind(wxEVT_COMMAND_MENU_SELECTED, #handler, this, $name->GetId());</template>
     <template name="evt_entry_OnUpdateUI">EVT_UPDATE_UI( $id, #handler )</template>
-    <template name="evt_connect_OnUpdateUI">this->Connect( $name->GetId(), wxEVT_UPDATE_UI, #handler );</template>
-    <template name="evt_disconnect_OnUpdateUI">this->Disconnect( $id, wxEVT_UPDATE_UI, #handler );</template>
+    <template name="evt_connect_OnMenuSelection">this->Bind(wxEVT_MENU, #handler, this, $id);</template>
+    <template name="evt_connect_OnUpdateUI">this->Bind(wxEVT_UPDATE_UI, #handler, this, $id);</template>
+    <template name="evt_disconnect_OnMenuSelection">this->Unbind(wxEVT_MENU, #handler, this, $id);</template>
+    <template name="evt_disconnect_OnUpdateUI">this->Unbind(wxEVT_UPDATE_UI, #handler, this, $id);</template>
   </templates>
 
   <templates class="separator">
